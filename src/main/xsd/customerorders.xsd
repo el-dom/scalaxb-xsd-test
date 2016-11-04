@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://testNamespace.com"
+	xmlns:aroma="http://testNamespace.com"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="customerordersCommon.xsd"/>
+	
+	<xs:element name="CustomerOrders">
+		<xs:complexType>
+	    	<xs:sequence>
+				<xs:element ref="aroma:CompleteOrder" minOccurs="1" maxOccurs="unbounded"/> 
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+
+	
+</xs:schema>

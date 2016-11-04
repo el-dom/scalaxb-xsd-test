@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+										elementFormDefault="qualified">
+										
+  <xs:include schemaLocation="common.xsd"/>	
+  
+	<xs:complexType name="reduced-address">
+		<xs:sequence> 
+		  	<xs:element name="CO" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		  	<xs:element name="CompanyNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Street" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StreetNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Zip" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PoBox" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BlockOfFlats" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="City" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ProvinceDistrict" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="State" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress1" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Country" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Language" type="lang-country" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Checked" type="xs:boolean" use="required"/>
+	</xs:complexType>									
+	
+  <!-- this type is used for customer addresses -->
+	<xs:complexType name="address">
+		<xs:sequence> 
+		  	<xs:element name="CO" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		  	<xs:element name="CompanyNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Street" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StreetNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Zip" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PoBox" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BlockOfFlats" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="City" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ProvinceDistrict" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="State" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress1" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Country" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Language" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="No01Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No02Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No03Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No04Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No05Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Checked" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	
+	<!-- this type is used for order addresses in order history update ext -->
+	<xs:complexType name="complex-address-without-custom">
+		<xs:sequence> 
+			<xs:element name="Salutation" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Title" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameAffix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FirstName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MiddleName" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NamePrefix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CO" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CompanyNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Street" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StreetNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Zip" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PoBox" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BlockOfFlats" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="City" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ProvinceDistrict" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="State" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress1" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Country" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Language" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EMail" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhoneNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FaxNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Checked" type="xs:boolean" use="required"/>
+	</xs:complexType>
+					
+	<!-- this type is used for order addresses -->
+	<xs:complexType name="complex-address">
+		<xs:sequence> 
+			<xs:element name="Salutation" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Title" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameAffix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FirstName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MiddleName" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NamePrefix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CO" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CompanyNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ShopNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Street" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StreetNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Zip" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PoBox" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BlockOfFlats" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="City" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ProvinceDistrict" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="State" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress1" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FormattedAddress3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Country" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Language" type="lang-country" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="EMail" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhoneNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FaxNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No01Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No02Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No03Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No04Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="No05Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="Distributor" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Sender" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Department" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Checked" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	
+
+	<xs:complexType name = "payment-instrument">
+	   	<xs:sequence>
+	   		<xs:element name="PaymentGrossValue" type="positive-currency-val-with-zero" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentId" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentId2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentId3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentTransactionId" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentReferenceNumber" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+	   		<xs:element name="PaymentShortId" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>	   		
+			<xs:element name="InstitutionKey" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InstitutionName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Number" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InterstateAccountNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InterstateInstitutionIdent" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CheckNumber" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CcExpireDate" type="cc-expire-date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HolderName" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HolderNameAdd1" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HolderNameAdd2" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HolderNameAdd3" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidFrom" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidTo" type="xs:date" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="PaymentMethod" type="not-empty-normalizedString" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="com">
+	  <xs:sequence>
+			<xs:element name="Content" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ValidFrom" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidTo" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StandardFlag" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="not-empty-normalizedString" use="required" />
+		<xs:attribute name="SetCom" type="xs:boolean" use="optional" />
+	</xs:complexType>
+	
+	<xs:element name="block">
+      <xs:complexType>
+			<xs:sequence>
+				<xs:element name="Date" type="xs:date" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Reason" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Remark" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ValidFrom" type="xs:date" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ValidTo" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="Type" type="not-empty-normalizedString" use="required" />
+			<xs:attribute name="SetBlock" type="xs:boolean" use="required" />
+      </xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="cc-expire-date">
+	  	<xs:restriction base="xs:normalizedString">
+	    	<xs:minLength value = "4"/>
+	    	<xs:maxLength value = "4"/>
+	  	</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>	

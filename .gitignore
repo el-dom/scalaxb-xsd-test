@@ -1,0 +1,7 @@
+*.iml
+*~
+*.DS_Store
+target
+/app/modules/shop/.toDelete
+/app/.sbtrc
+/.idea/

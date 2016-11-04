@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by Thomas Kliche (None) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!--
+		common xml types for aroma core system
+	-->
+  <xs:simpleType name="decimal-or-empty">
+    <xs:union memberTypes="xs:decimal empty-string"/>
+  </xs:simpleType>
+  <xs:simpleType name="positive-currency-val-or-empty">
+    <xs:union memberTypes="positive-currency-val empty-string"/>
+  </xs:simpleType>
+  <xs:simpleType name="positive-currency-val-with-zero-or-empty">
+    <xs:union memberTypes="positive-currency-val-with-zero empty-string"/>
+  </xs:simpleType>
+  <xs:simpleType name="empty-string">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value=""/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="not-empty-normalizedString">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="currency-val">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="14"/>
+      <xs:fractionDigits value="2"/>
+      <!-- 12 digits at the left side - max Value: 999999999999.99 -->
+      <!-- 2 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-currency-val">
+    <xs:restriction base="positive-decimal">
+      <xs:totalDigits value="14"/>
+      <xs:fractionDigits value="2"/>
+      <!-- 12 digits at the left side - max Value: 999999999999.99 -->
+      <!-- 2 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-currency-val-with-zero">
+    <xs:restriction base="positive-decimal-with-zero">
+      <xs:totalDigits value="14"/>
+      <xs:fractionDigits value="2"/>
+      <!-- 12 digits at the left side - max Value: 999999999999.99 -->
+      <!-- 2 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-percentage">
+    <xs:restriction base="positive-decimal">
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="6"/>
+      <!-- 12 digits at the left side - max Value: 99999.999999 -->
+      <!-- 6 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-percentage-with-zero">
+    <xs:restriction base="positive-decimal-with-zero">
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="6"/>
+      <!-- 12 digits at the left side - max Value: 99999.999999 -->
+      <!-- 6 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-decimal">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="positive-decimal-with-zero">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="18"/>
+      <xs:fractionDigits value="6"/>
+      <!-- 12 digits at the left side - max Value: 999999999999.999999 -->
+      <!-- 6 digits after point-->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="no-type">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="5"/>
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="medium-no-type">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="3"/>
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="small-no-type">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="lang-country">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="currency">
+    <xs:restriction base="xs:normalizedString">
+      <xs:minLength value="3"/>
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="age-restriction">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="type-ExtArticleCustom">
+    <xs:simpleContent>
+      <xs:extension base="not-empty-normalizedString">
+        <xs:attribute name="Attribute01" type="not-empty-normalizedString"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="type-MarketplaceDependent">
+    <xs:sequence>
+      <xs:element name="MarketplaceNo" type="not-empty-normalizedString"/>
+    </xs:sequence>
+    <xs:attribute name="RemoveAssignment" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>if true the related data for this marketplace will be removed from persistence</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+	<xs:complexType name="user-defined-attributes">
+		<xs:sequence>
+			<xs:element name="user-defined-attribute" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="name" type="xs:normalizedString"
+								use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

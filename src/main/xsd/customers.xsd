@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="cst_ord_common.xsd"/>
+
+	<!-- begin customer element -->
+
+	<xs:element name="Customer">
+		<xs:complexType>
+	    	<xs:sequence>
+		    	<xs:element name="ShopCountry" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+		    	<xs:element name="CustNoShop" type="small-no-type" minOccurs="1" maxOccurs="1"/>
+		    	<xs:element name="ExternalCustomerId" type="no-type" minOccurs="0" maxOccurs="1"/>
+		    	<xs:element name="RegisteredCustomer" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		    	<xs:element name="CustomerGroup" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+		    	<xs:element name="CustomerGroupNo" type="small-no-type" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="ImportStatus" type="import-status" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="InitialCreditLimit" type="positive-currency-val-with-zero-or-empty" minOccurs="0" maxOccurs="1"/>
+		    	<xs:element name="Gender" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Nationality" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Language" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Salutation" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Title" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="NameAffix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="FirstName" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="MiddleName" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="NamePrefix" type="xs:normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="LastName" type="not-empty-normalizedString" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="DOB" type="xs:date" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="IdentChecked" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="IdentCheckDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="TaxExempt" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="VatId" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="No1Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="No2Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="No3Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="No4Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="No5Custom" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="MarketplaceNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+    			<xs:element name="BaseCardNo" type="not-empty-normalizedString" minOccurs="0" maxOccurs="1"/>
+
+	    		<xs:element name="OrderEntryBlock" minOccurs="0" maxOccurs="1">
+    			<xs:complexType>
+    				<xs:sequence minOccurs="0" maxOccurs="1">
+    					<xs:element ref="block"/>
+    				</xs:sequence>
+    			</xs:complexType>
+				</xs:element>
+				<xs:element ref="CommunicationBlocks" minOccurs="0" maxOccurs="1"/>
+
+				<xs:element name="DefaultAddress" type="address" minOccurs="1" maxOccurs="1"/>
+
+				<xs:element name="ComChannels" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+				    	<xs:sequence>
+							<xs:element name="ComChannel" type="com" minOccurs="0" maxOccurs="5"/>
+						</xs:sequence>
+				  	</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+	  	</xs:complexType>
+	  	<xs:unique name="unique-CustNoShop">
+     		<xs:selector xpath="Customer"/>
+     		<xs:field xpath="@CustNoShop"/>
+   		</xs:unique>
+  	</xs:element>
+
+ <!-- end customer element -->
+
+	<xs:element name="CommunicationBlocks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="block" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name = "import-status">
+		<xs:annotation>
+  		<xs:documentation>new customer or customer with updated information</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base = "xs:string">
+  		<xs:enumeration value = "NEW"/>
+  		<xs:enumeration value = "UPDATE"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+</xs:schema>
